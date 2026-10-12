@@ -1,0 +1,31 @@
+repos:
+  - repo: local
+    hooks:
+      - id: evals-ruff-check
+        name: evals ruff check
+        entry: uv --project evals run ruff check
+        language: system
+        files: ^evals/.*\.py$
+
+      - id: evals-ruff-format-check
+        name: evals ruff format --check
+        entry: uv --project evals run ruff format --check
+        language: system
+        files: ^evals/.*\.py$
+
+      - id: evals-ty-check
+        name: evals ty check
+        entry: uv --directory evals run ty check
+        language: system
+        pass_filenames: false
+        files: ^evals/.*\.py$
+
+      # LOCAL FORK HOOK -- not part of upstream superpowers.
+      # Enforces the OneDrive for Business path-length rule (90% policy:
+      # full path <= 360 chars, file name <= 229 chars).
+      - id: onedrive-path-length-check
+        name: one-drive path length check (90% rule)
+        entry: pwsh -NoProfile -File scripts/check-path-length.ps1
+        language: system
+        pass_filenames: false
+        always_run: true

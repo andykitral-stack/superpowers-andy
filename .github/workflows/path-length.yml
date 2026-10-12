@@ -1,0 +1,19 @@
+# LOCAL FORK WORKFLOW -- not part of upstream superpowers.
+#
+# Enforces the fork's OneDrive for Business path-length rule (90% policy:
+# full path <= 360 chars, file name <= 229 chars). See
+# windows-onedrive-hardening.md and scripts/check-path-length.ps1.
+
+name: Path length check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  path-length:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check path lengths
+        run: pwsh -NoProfile -File scripts/check-path-length.ps1

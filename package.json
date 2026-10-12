@@ -1,0 +1,24 @@
+{
+  "name": "superpowers",
+  "version": "7.0.0",
+  "description": "Superpowers skills and runtime bootstrap for coding agents",
+  "type": "module",
+  "main": ".opencode/plugins/superpowers.js",
+  "packageManager": "pnpm@12.11.2",
+  "keywords": [
+    "pi-package",
+    "skills",
+    "tdd",
+    "debugging",
+    "collaboration",
+    "workflow"
+  ],
+  "pi": {
+    "extensions": [
+      "./.pi/extensions/superpowers.ts"
+    ],
+    "skills": [
+      "./skills"
+    ]
+  }
+}
