@@ -17,3 +17,6 @@ __pycache__/
 *.pyc
 *.pyo
 .pytest_cache/
+
+# LOCAL FORK -- keep one-off git bundles out of the working tree/status
+*.bundle
